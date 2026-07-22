@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="google-site-verification" content="y-LS3uM4fES9Ft7rT4vUwuwfYqb0PyzVHX9EvS7URRE" />
 <title>Festival MêiMundo</title>
-<meta name="description" content="Festival MêiMundo — Onde as Vozes se Encontram. Festival cultural da UFPB no Campus I, em João Pessoa: música, arte e diversidade." />
+<meta name="description" content="Festival MêiMundo: Onde as Vozes se Encontram. Festival cultural da UFPB no Campus I, em João Pessoa: música, arte e diversidade." />
 <link rel="canonical" href="https://meimundo.github.io/" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Festival MêiMundo — Onde as Vozes se Encontram" />
+<meta property="og:title" content="Festival MêiMundo: Onde as Vozes se Encontram" />
 <meta property="og:description" content="Festival cultural gratuito da UFPB no CCTA, Campus I, João Pessoa/PB. Imersão Cultural em 03/08 e o festival em 04/08 de 2026." />
 <meta property="og:image" content="https://i.imgur.com/wXUvZ3x.jpeg" />
 <meta property="og:url" content="https://meimundo.github.io/" />
 <meta property="og:locale" content="pt_BR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Festival MêiMundo — Onde as Vozes se Encontram" />
+<meta name="twitter:title" content="Festival MêiMundo: Onde as Vozes se Encontram" />
 <meta name="twitter:description" content="Festival cultural gratuito da UFPB no CCTA, Campus I, João Pessoa/PB." />
 <meta name="twitter:image" content="https://i.imgur.com/wXUvZ3x.jpeg" />
 
@@ -23,14 +23,14 @@
 {
   "@context": "https://schema.org",
   "@type": "Event",
-  "name": "Festival MêiMundo — Onde as Vozes se Encontram",
+  "name": "Festival MêiMundo: Onde as Vozes se Encontram",
   "startDate": "2026-08-03",
   "endDate": "2026-08-04",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "eventStatus": "https://schema.org/EventScheduled",
   "location": {
     "@type": "Place",
-    "name": "CCTA — Centro de Comunicação, Turismo e Artes, UFPB",
+    "name": "CCTA, Centro de Comunicação, Turismo e Artes, UFPB",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "João Pessoa",
@@ -39,7 +39,7 @@
     }
   },
   "image": ["https://i.imgur.com/wXUvZ3x.jpeg"],
-  "description": "Festival cultural gratuito da UFPB com música, arte e diversidade — Imersão Cultural em 03/08 e o festival em 04/08.",
+  "description": "Festival cultural gratuito da UFPB com música, arte e diversidade. Imersão Cultural em 03/08 e o festival em 04/08.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -49,14 +49,14 @@
   },
   "organizer": {
     "@type": "Organization",
-    "name": "Curso de Relações Públicas — UFPB",
+    "name": "Curso de Relações Públicas, UFPB",
     "url": "https://meimundo.github.io/"
   }
 }
 </script>
 
 <!-- ============================================================
-     FESTIVAL MÊIMUNDO — v8
+     FESTIVAL MÊIMUNDO - v8
      Página única: todo o menu aponta para âncoras (#id) desta
      mesma página. Nenhum link de navegação leva a outra página.
 
@@ -386,17 +386,65 @@ h1,h2,h3{ font-family:var(--display); font-weight:400; line-height:1.05; letter-
 @media (max-width:900px){ .bento-parceiros{ grid-template-columns:1fr; } }
 
 /* ================= MÊIMUNDO NA MÍDIA ================= */
-.bento-imprensa{ grid-template-columns:repeat(4,1fr); }
+/* --- Carrossel de cobertura (conteúdo cronológico, mais recente primeiro) --- */
+.midia-carrossel{ position:relative; margin-bottom:clamp(2rem,4vw,2.8rem); }
+.carrossel-cabecalho{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  margin-bottom:1rem;
+}
+.carrossel-cabecalho h3{
+  font-family:var(--texto); font-weight:800; font-size:1rem; color:var(--cinza);
+  text-transform:uppercase; letter-spacing:.08em;
+}
+.carrossel-controles{ display:flex; gap:.6rem; }
+.carrossel-botao{
+  width:42px; height:42px; border-radius:999px; border:1.5px solid rgba(17,17,17,.12);
+  background:var(--branco); color:var(--preto); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .2s ease, transform .2s ease, border-color .2s ease;
+}
+.carrossel-botao svg{ width:18px; height:18px; }
+.carrossel-botao:hover{ background:var(--preto); color:var(--branco); border-color:var(--preto); transform:translateY(-2px); }
+.carrossel-botao:disabled{ opacity:.35; cursor:not-allowed; transform:none; }
+.carrossel-botao:disabled:hover{ background:var(--branco); color:var(--preto); border-color:rgba(17,17,17,.12); }
+
+.carrossel-trilho{
+  display:flex; gap:var(--gap); overflow-x:auto; scroll-snap-type:x mandatory;
+  padding:.3rem .3rem 1.1rem; margin:0 -.3rem;
+  scrollbar-width:thin; scrollbar-color:rgba(17,17,17,.25) transparent;
+}
+.carrossel-trilho::-webkit-scrollbar{ height:7px; }
+.carrossel-trilho::-webkit-scrollbar-thumb{ background:rgba(17,17,17,.22); border-radius:999px; }
+.carrossel-item{
+  flex:0 0 clamp(255px, 32vw, 320px); scroll-snap-align:start;
+  display:flex;
+}
+.carrossel-item .celula{ width:100%; margin:0; }
+
+.carrossel-indicadores{ display:flex; justify-content:center; gap:.45rem; margin-top:.2rem; }
+.carrossel-ponto{
+  width:8px; height:8px; border-radius:999px; border:0; padding:0;
+  background:rgba(17,17,17,.16); cursor:pointer; transition:background .2s ease, transform .2s ease;
+}
+.carrossel-ponto.ativo{ background:var(--roxo); transform:scale(1.25); }
+
+/* --- Grade estática: conquistas, participação acadêmica, fotos, contato --- */
+.bento-destaques{ grid-template-columns:repeat(4,1fr); }
 .imprensa-contato{ grid-column:span 4; flex-direction:row; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.2rem; }
 .imprensa-contato > div:first-child{ display:flex; align-items:center; gap:1rem; }
 .imprensa-lista{ list-style:none; display:grid; gap:.3rem; }
 .imprensa-lista a{ text-decoration:underline; font-weight:600; }
 .imprensa-links-duplos{ display:flex; gap:.7rem; flex-wrap:wrap; }
 .imprensa-links-duplos .link-pill{ margin-top:1.1rem; }
-@media (max-width:960px){ .bento-imprensa{ grid-template-columns:repeat(2,1fr); } .imprensa-contato{ grid-column:span 2; } }
+@media (max-width:960px){ .bento-destaques{ grid-template-columns:repeat(2,1fr); } .imprensa-contato{ grid-column:span 2; } }
 @media (max-width:560px){
-  .bento-imprensa{ grid-template-columns:1fr; }
+  .bento-destaques{ grid-template-columns:1fr; }
   .imprensa-contato{ grid-column:span 1; flex-direction:column; align-items:flex-start; }
+  .carrossel-item{ flex-basis:82vw; }
+  .carrossel-cabecalho h3{ font-size:.86rem; }
+}
+@media (max-width:400px){
+  .carrossel-botao{ width:38px; height:38px; }
 }
 
 /* ================= RODAPÉ ================= */
@@ -680,7 +728,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:400; line-height:1.05; letter-
     <article class="celula bg-laranja revelar">
       <svg class="icone" aria-hidden="true"><use href="#s-som"/></svg>
       <h3>Programação</h3>
-      <p><strong>04/08 é o festival</strong>, com shows e atrações musicais. <span style="opacity:.75;">No dia anterior, 03/08, rola a Imersão Cultural — rodas de conversa, cine-debate e oficinas.</span></p>
+      <p><strong>04/08 é o festival</strong>, com shows e atrações musicais. <span style="opacity:.75;">No dia anterior, 03/08, rola a Imersão Cultural: rodas de conversa, cine-debate e oficinas.</span></p>
     </article>
     <article class="celula celula-borda col-2 revelar">
       <svg class="icone" style="color:var(--roxo)" aria-hidden="true"><use href="#s-baloes"/></svg>
@@ -701,35 +749,35 @@ h1,h2,h3{ font-family:var(--display); font-weight:400; line-height:1.05; letter-
     <!-- SUBSTITUA-FOTO 1: saxofonista, 2025 -->
     <div class="galeria-celula pequena revelar">
       <button class="foto-botao" aria-label="Ampliar foto de 2025">
-        <img src="https://i.imgur.com/wXUvZ3x.jpeg" alt="Saxofonista em apresentação ao entardecer — 2025" loading="lazy">
+        <img src="https://i.imgur.com/wXUvZ3x.jpeg" alt="Saxofonista em apresentação ao entardecer, 2025" loading="lazy">
       </button>
       <div class="galeria-legenda"><span class="ano">2025</span></div>
     </div>
     <!-- SUBSTITUA-FOTO 2: percussão, 2024 -->
     <div class="galeria-celula pequena revelar">
       <button class="foto-botao" aria-label="Ampliar foto de 2024">
-        <img src="https://i.imgur.com/X1QjJD5.jpeg" alt="Grupo de percussão em cortejo — 2024" loading="lazy">
+        <img src="https://i.imgur.com/X1QjJD5.jpeg" alt="Grupo de percussão em cortejo, 2024" loading="lazy">
       </button>
       <div class="galeria-legenda"><span class="ano">2024</span></div>
     </div>
     <!-- SUBSTITUA-FOTO 3: 2023 -->
     <div class="galeria-celula pequena revelar">
       <button class="foto-botao" aria-label="Ampliar foto de 2023">
-        <img src="https://i.imgur.com/IepX7ky.jpeg" alt="Foto do festival — 2023" loading="lazy">
+        <img src="https://i.imgur.com/IepX7ky.jpeg" alt="Foto do festival, 2023" loading="lazy">
       </button>
       <div class="galeria-legenda"><span class="ano">2023</span></div>
     </div>
     <!-- SUBSTITUA-FOTO 4: sanfoneiro, 2022 -->
     <div class="galeria-celula pequena revelar">
       <button class="foto-botao" aria-label="Ampliar foto de 2022">
-        <img src="https://i.imgur.com/H3Phviq.jpeg" alt="Sanfoneiro cantando no palco — 2022" loading="lazy">
+        <img src="https://i.imgur.com/H3Phviq.jpeg" alt="Sanfoneiro cantando no palco, 2022" loading="lazy">
       </button>
       <div class="galeria-legenda"><span class="ano">2022</span></div>
     </div>
     <!-- SUBSTITUA-FOTO 5: vocalista, 2018 -->
     <div class="galeria-celula pequena revelar">
-      <button class="foto-botao" aria-label="Ampliar foto: vocalista ao microfone, 2018" data-legenda="Vocalista em performance ao vivo — 2018">
-        <img src="https://i.imgur.com/DegisjM.jpeg" alt="Vocalista em performance ao vivo — 2018" loading="lazy">
+      <button class="foto-botao" aria-label="Ampliar foto: vocalista ao microfone, 2018" data-legenda="Vocalista em performance ao vivo, 2018">
+        <img src="https://i.imgur.com/DegisjM.jpeg" alt="Vocalista em performance ao vivo, 2018" loading="lazy">
       </button>
       <div class="galeria-legenda"><span class="ano">2018</span></div>
     </div>
@@ -794,44 +842,160 @@ h1,h2,h3{ font-family:var(--display); font-weight:400; line-height:1.05; letter-
   <div class="secao-topo revelar">
     <p class="etiqueta"><span class="ponto"></span>Imprensa</p>
     <h2 class="secao-titulo">MêiMundo na mídia</h2>
-    <p class="secao-sub">Um pouco de como o festival já foi contado — e reconhecido — por quem cobre cultura e comunicação no Brasil.</p>
+    <p class="secao-sub">Um pouco de como o festival já foi contado, e reconhecido, por quem cobre cultura e comunicação no Brasil.</p>
   </div>
-  <div class="miolo bento bento-imprensa">
-    <!-- Cobertura: Portal Correio — 6ª edição -->
-    <article class="celula bg-violeta revelar">
-      <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
-      <p class="fonte-etiqueta">Portal Correio</p>
-      <h3>MêiMundo chega à 6ª edição</h3>
-      <p>Matéria sobre a edição de 2026, com dois dias de programação gratuita no CCTA da UFPB: Imersão Cultural em 3 de agosto e o festival em 4 de agosto.</p>
-      <span class="data-noticia">21/07/2026</span>
-      <a class="link-pill" href="https://portalcorreio.com.br/festival-meimundo-chega-a-6a-edicao-com-programacao-gratuita-na-ufpb/" target="_blank" rel="noopener" aria-label="Ler matéria completa no Portal Correio">Ler no Portal Correio <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
-    </article>
-    <!-- TV UFPB -->
-    <article class="celula bg-rosa revelar">
-      <svg class="icone" aria-hidden="true"><use href="#s-play"/></svg>
-      <p class="fonte-etiqueta">TV UFPB</p>
-      <h3>MêiMundo na tela da universidade</h3>
-      <p>Reportagem em vídeo sobre o festival, exibida pela emissora da própria UFPB.</p>
-      <a class="link-pill" href="https://www.youtube.com/watch?v=CdHtFohlsU4" target="_blank" rel="noopener" aria-label="Assistir reportagem da TV UFPB no YouTube">Assistir no YouTube <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
-    </article>
-    <!-- Cobertura: Jornal da Paraíba -->
-    <article class="celula bg-laranja revelar">
-      <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
-      <p class="fonte-etiqueta">Jornal da Paraíba</p>
-      <h3>Diversidade cultural em destaque</h3>
-      <p>Matéria sobre a edição de 2024, no CCTA da UFPB, com entrada gratuita. Lembra que o festival é organizado por estudantes de Relações Públicas e existe desde 2018.</p>
-      <span class="data-noticia">02/10/2024</span>
-      <a class="link-pill" href="https://jornaldaparaiba.com.br/guia-qualaboa/agenda/festival-mei-mundo-em-joao-pessoa" target="_blank" rel="noopener" aria-label="Ler matéria completa no Jornal da Paraíba">Ler no Jornal da Paraíba <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
-    </article>
-    <!-- Cobertura: G1 Paraíba -->
-    <article class="celula bg-roxo revelar">
-      <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
-      <p class="fonte-etiqueta">G1 Paraíba</p>
-      <h3>Programação gratuita ganha destaque</h3>
-      <p>Cobertura da edição de 2023, sobre a programação cultural gratuita realizada numa quarta-feira, dia 1º de novembro, em João Pessoa.</p>
-      <span class="data-noticia">01/11/2023</span>
-      <a class="link-pill" href="https://g1.globo.com/pb/paraiba/musica/noticia/2023/11/01/festival-meimundo-tem-programacao-cultural-gratuita-nesta-quarta-1o-em-joao-pessoa.ghtml" target="_blank" rel="noopener" aria-label="Ler matéria completa no G1">Ler no G1 <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
-    </article>
+
+  <!-- Carrossel de cobertura: da matéria mais recente (2026) para a mais antiga -->
+  <div class="miolo midia-carrossel revelar">
+    <div class="carrossel-cabecalho">
+      <h3 id="carrosselTitulo">Cobertura na imprensa</h3>
+      <div class="carrossel-controles">
+        <button class="carrossel-botao" id="carrosselAnterior" aria-label="Ver matérias anteriores">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carrossel-botao" id="carrosselProximo" aria-label="Ver mais matérias">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="carrossel-trilho" id="carrosselTrilho" role="list" aria-labelledby="carrosselTitulo" tabindex="0">
+      <!-- Cobertura: Minuto Turismo -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-laranja">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Minuto Turismo</p>
+          <h3>Programação gratuita é anunciada</h3>
+          <p>Matéria sobre a 6ª edição, nos dias 3 e 4 de agosto no CCTA da UFPB, com música, oficinas, rodas de conversa e apresentações culturais gratuitas.</p>
+          <span class="data-noticia">22/07/2026</span>
+          <a class="link-pill" href="https://minutoturismo.com.br/festival-meimundo-2026-tera-programacao-gratuita-na-ufpb-em-joao-pessoa/" target="_blank" rel="noopener" aria-label="Ler matéria completa no Minuto Turismo">Ler no Minuto Turismo <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: Turismo em Foco -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-rosa">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Turismo em Foco</p>
+          <h3>Música, oficinas e cultura de graça</h3>
+          <p>Matéria com as datas confirmadas do 6º Festival MêiMundo, reunindo música, oficinas e programação cultural gratuita no CCTA da UFPB.</p>
+          <span class="data-noticia">22/07/2026</span>
+          <a class="link-pill" href="https://turismoemfoco.com.br/v1/2026/07/22/musica-oficinas-e-cultura-de-graca-confira-as-datas-do-6o-festival-meimundo/" target="_blank" rel="noopener" aria-label="Ler matéria completa no Turismo em Foco">Ler no Turismo em Foco <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: Notícia Certa (Instagram) -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-laranja">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Notícia Certa (Instagram)</p>
+          <h3>Festival MêiMundo chega à 6ª edição com programação gratuita na UFPB</h3>
+          <p>Publicação no Instagram anunciando a 6ª edição do festival, com programação gratuita no CCTA da UFPB nos dias 3 e 4 de agosto.</p>
+          <span class="data-noticia">21/07/2026</span>
+          <a class="link-pill" href="https://www.instagram.com/p/DbEGVJjEUTM/?igsh=b21nZjZ3MnE2Nm9m" target="_blank" rel="noopener" aria-label="Ver publicação no Instagram da Notícia Certa">Ver no Instagram <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: Portal Correio, 6ª edição -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-violeta">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Portal Correio</p>
+          <h3>MêiMundo chega à 6ª edição</h3>
+          <p>Matéria sobre a edição de 2026, com dois dias de programação gratuita no CCTA da UFPB: Imersão Cultural em 3 de agosto e o festival em 4 de agosto.</p>
+          <span class="data-noticia">21/07/2026</span>
+          <a class="link-pill" href="https://portalcorreio.com.br/festival-meimundo-chega-a-6a-edicao-com-programacao-gratuita-na-ufpb/" target="_blank" rel="noopener" aria-label="Ler matéria completa no Portal Correio">Ler no Portal Correio <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: Notícias Certa PB -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-rosa">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Notícias Certa PB</p>
+          <h3>6ª edição tem data marcada</h3>
+          <p>Matéria sobre a confirmação da 6ª edição, com música, oficinas, rodas de conversa e apresentações culturais gratuitas no CCTA da UFPB.</p>
+          <span class="data-noticia">21/07/2026</span>
+          <a class="link-pill" href="https://noticiacertapb.com.br/2026/07/21/festival-meimundo-chega-a-6a-edicao-com-programacao-gratuita-na-ufpb/" target="_blank" rel="noopener" aria-label="Ler matéria completa em Notícias Certa PB">Ler na Notícias Certa <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: Kath News -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-laranja">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Kath News</p>
+          <h3>Um olhar sobre memória e identidade</h3>
+          <p>Cobertura da 6ª edição que destaca a proposta de 2026: pensar a história e a identidade de João Pessoa por meio da arte e da cultura.</p>
+          <span class="data-noticia">21/07/2026</span>
+          <a class="link-pill" href="https://kathnewsbr.blogspot.com/2026/07/festival-meimundo-chega-6-edicao-com.html" target="_blank" rel="noopener" aria-label="Ler matéria completa no Kath News">Ler no Kath News <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: WSCOM -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-roxo">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">WSCOM</p>
+          <h3>Programação da 6ª edição repercute</h3>
+          <p>Nota sobre a programação gratuita da 6ª edição do MêiMundo no CCTA da UFPB, com atividades culturais nos dias 3 e 4 de agosto.</p>
+          <span class="data-noticia">21/07/2026</span>
+          <a class="link-pill" href="https://wscom.com.br/midias-entretenimento/cultura/2026/07/21/festival-meimundo-2026-programacao-ccta-ufpb/" target="_blank" rel="noopener" aria-label="Ler matéria completa na WSCOM">Ler na WSCOM <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: PB News -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-violeta">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">PB News</p>
+          <h3>Mais uma cobertura da 6ª edição</h3>
+          <p>Nota sobre a 6ª edição do festival, com programação gratuita no CCTA da UFPB nos dias 3 e 4 de agosto.</p>
+          <span class="data-noticia">21/07/2026</span>
+          <a class="link-pill" href="https://pbnews.com.br/noticia/59693/festival-meimundo-chega-a-6o-edicao-com-programacao-gratuita-na-ufpb" target="_blank" rel="noopener" aria-label="Ler matéria completa no PB News">Ler no PB News <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: Movimento PB -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-rosa">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Movimento PB</p>
+          <h3>Agenda cultural destaca o festival</h3>
+          <p>Destaque na agenda cultural paraibana para a 6ª edição do MêiMundo, com entrada gratuita no CCTA da UFPB em agosto.</p>
+          <span class="data-noticia">21/07/2026</span>
+          <a class="link-pill" href="https://movimentopb.com.br/paraiba/festival-meimundo-ufpb-cultura-gratuita/" target="_blank" rel="noopener" aria-label="Ler matéria completa no Movimento PB">Ler no Movimento PB <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- TV UFPB -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-laranja">
+          <svg class="icone" aria-hidden="true"><use href="#s-play"/></svg>
+          <p class="fonte-etiqueta">TV UFPB</p>
+          <h3>MêiMundo na tela da universidade</h3>
+          <p>Reportagem em vídeo sobre o festival, exibida pela emissora da própria UFPB.</p>
+          <a class="link-pill" href="https://www.youtube.com/watch?v=CdHtFohlsU4" target="_blank" rel="noopener" aria-label="Assistir reportagem da TV UFPB no YouTube">Assistir no YouTube <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: Jornal da Paraíba -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-roxo">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">Jornal da Paraíba</p>
+          <h3>Diversidade cultural em destaque</h3>
+          <p>Matéria sobre a edição de 2024, no CCTA da UFPB, com entrada gratuita. Lembra que o festival é organizado por estudantes de Relações Públicas e existe desde 2018.</p>
+          <span class="data-noticia">02/10/2024</span>
+          <a class="link-pill" href="https://jornaldaparaiba.com.br/guia-qualaboa/agenda/festival-mei-mundo-em-joao-pessoa" target="_blank" rel="noopener" aria-label="Ler matéria completa no Jornal da Paraíba">Ler no Jornal da Paraíba <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+      <!-- Cobertura: G1 Paraíba -->
+      <div class="carrossel-item" role="listitem">
+        <article class="celula bg-violeta">
+          <svg class="icone" aria-hidden="true"><use href="#s-jornal"/></svg>
+          <p class="fonte-etiqueta">G1 Paraíba</p>
+          <h3>Programação gratuita ganha destaque</h3>
+          <p>Cobertura da edição de 2023, sobre a programação cultural gratuita realizada numa quarta-feira, dia 1º de novembro, em João Pessoa.</p>
+          <span class="data-noticia">01/11/2023</span>
+          <a class="link-pill" href="https://g1.globo.com/pb/paraiba/musica/noticia/2023/11/01/festival-meimundo-tem-programacao-cultural-gratuita-nesta-quarta-1o-em-joao-pessoa.ghtml" target="_blank" rel="noopener" aria-label="Ler matéria completa no G1">Ler no G1 <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
+        </article>
+      </div>
+    </div>
+    <div class="carrossel-indicadores" id="carrosselIndicadores" aria-hidden="true"></div>
+  </div>
+
+  <!-- Bloco estático: conquistas, participação acadêmica, banco de fotos e contato -->
+  <div class="miolo bento bento-destaques">
     <!-- Conquistas: campeão regional e nacional na Expocom 2024 -->
     <article class="celula bg-roxo col-2 revelar">
       <svg class="icone" aria-hidden="true"><use href="#s-trofeu"/></svg>
@@ -848,7 +1012,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:400; line-height:1.05; letter-
       <svg class="icone" aria-hidden="true"><use href="#s-academico"/></svg>
       <p class="fonte-etiqueta">Participação acadêmica</p>
       <h3>No maior evento de estudos em cultura do país</h3>
-      <p>O MêiMundo já esteve no maior evento de estudos em cultura do Brasil, sediado pela UFBA — um passo do festival para além dos palcos de João Pessoa.</p>
+      <p>O MêiMundo já esteve no maior evento de estudos em cultura do Brasil, sediado pela UFBA, um passo do festival para além dos palcos de João Pessoa.</p>
       <a class="link-pill" href="https://www.instagram.com/p/DNYaCkBR6T1/" target="_blank" rel="noopener" aria-label="Ver publicação sobre a participação no evento da UFBA">Ver publicação <svg aria-hidden="true"><use href="#s-seta"/></svg></a>
     </article>
     <!-- Fotos oficiais em alta resolução -->
@@ -942,6 +1106,58 @@ window.addEventListener('scroll', () => { botaoTopo.classList.toggle('visivel', 
 botaoTopo.addEventListener('click', () => {
   window.scrollTo({ top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 });
+
+/* Carrossel de cobertura na imprensa */
+(function(){
+  const trilho = document.getElementById('carrosselTrilho');
+  if (!trilho) return;
+  const itens = Array.from(trilho.querySelectorAll('.carrossel-item'));
+  const botaoAnterior = document.getElementById('carrosselAnterior');
+  const botaoProximo = document.getElementById('carrosselProximo');
+  const indicadores = document.getElementById('carrosselIndicadores');
+
+  itens.forEach((_, i) => {
+    const ponto = document.createElement('button');
+    ponto.className = 'carrossel-ponto';
+    ponto.setAttribute('aria-label', 'Ir para a matéria ' + (i + 1));
+    ponto.addEventListener('click', () => itens[i].scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'nearest', inline:'start' }));
+    indicadores.appendChild(ponto);
+  });
+  const pontos = Array.from(indicadores.children);
+
+  function itemAtivo(){
+    const bordaEsquerda = trilho.scrollLeft;
+    let indiceMaisProximo = 0;
+    let menorDistancia = Infinity;
+    itens.forEach((item, i) => {
+      const distancia = Math.abs(item.offsetLeft - bordaEsquerda);
+      if (distancia < menorDistancia){ menorDistancia = distancia; indiceMaisProximo = i; }
+    });
+    return indiceMaisProximo;
+  }
+
+  function atualizarEstado(){
+    const indice = itemAtivo();
+    pontos.forEach((p, i) => p.classList.toggle('ativo', i === indice));
+    botaoAnterior.disabled = trilho.scrollLeft <= 4;
+    botaoProximo.disabled = trilho.scrollLeft >= trilho.scrollWidth - trilho.clientWidth - 4;
+  }
+
+  function rolarPara(direcao){
+    const largura = itens[0] ? itens[0].getBoundingClientRect().width + 16 : 300;
+    trilho.scrollBy({ left: direcao * largura, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+
+  botaoAnterior.addEventListener('click', () => rolarPara(-1));
+  botaoProximo.addEventListener('click', () => rolarPara(1));
+  trilho.addEventListener('scroll', () => { window.requestAnimationFrame(atualizarEstado); }, { passive:true });
+  trilho.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight'){ rolarPara(1); e.preventDefault(); }
+    if (e.key === 'ArrowLeft'){ rolarPara(-1); e.preventDefault(); }
+  });
+  window.addEventListener('resize', atualizarEstado);
+  atualizarEstado();
+})();
 
 /* Reveal on scroll */
 const observador = new IntersectionObserver(entradas => {
